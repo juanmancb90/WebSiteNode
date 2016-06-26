@@ -10,14 +10,14 @@ html(lang="es")
 			a(href="/")=titulo
 
 		div.agregar
-			a(href="/agregar") Agregar			
+			a(href="/agregar").agregar Agregar			
 
 		div.contenedor
 
 		
-		- for (var i = 0; i < camisetas.length ; ++i) {
+		- for (var i in camisetas) {
 			div.item
-				h2="Camiseta " +camisetas[i].precio
+				h2="Camiseta "+camisetas[i].color+" Precio: $" +camisetas[i].precio
 				img(src=camisetas[i].imagen, width="250")
-				a(href="/tienda/comprar/" + camisetas[i].titulo  ).comprar  Comprar
+				a(href="/tienda/comprar/" + camisetas[i].color  ).comprar  Comprar
 		- }
