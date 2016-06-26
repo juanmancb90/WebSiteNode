@@ -4,6 +4,12 @@ html(lang="es")
 	head
 		title= titulo
 		link(href="stylesheets/style.css", rel='stylesheet')
+		link(href="/sweetalert/dist/sweetalert.css", rel="stylesheet")
+		link(rel="stylesheet", href="/sweetalert/dist/sweetalert.css")
+		script(type='text/javascript', src="/socket.io/socket.io.js")
+		script(type="text/javascript", src="/jquery/dist/jquery.min.js")
+		script(type='text/javascript', src="javascripts/chatCliente.js")
+		script(type="text/javascript", src="/sweetalert/dist/sweetalert.min.js")
 
 	body
 		h1 
@@ -20,4 +26,6 @@ html(lang="es")
 				a(href="/tienda/comprar/" + camisetas[i].titulo  ).comprar  Comprar
 		- }
 
-		
+		button(id="btnChat").agregar Chat
+
+		include chat.jade

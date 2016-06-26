@@ -8,10 +8,19 @@ const express = require('express'),
 			cookieParser = require('cookie-parser'), 
 			bodyParser = require('body-parser'), 
 			routes = require('./routes/index'), 
+      socket = require('./config/socketio/chatServidor'),  
 			app = express(), 
-			server = http.createServer(app);
+			server = http.createServer(app),
+      io = require('socket.io').listen(server);
 
+//init config server express
 app.set('port', process.env.PORT || 3000);
+//init socket server
+socket(io);
+//bower components
+//componentes 
+app.use(express.static(__dirname + '/bower_components'));
+
 //express configuration
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -23,7 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-//routes
+//config outes
 app.use('/', routes);
 
 // catch 404 and forward to error handler
